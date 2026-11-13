@@ -1,0 +1,41 @@
+# Build artifacts
+*.img
+*.bin
+*.zip
+*.tar
+*.tgz
+*.pax.tar
+*.partial
+*.out
+
+# Firmware and vendor blobs
+stock-rescue/
+firmware/
+vendor/
+
+# Signing material
+*.pem
+*.pk8
+*.p12
+*.jks
+*.key
+keys/
+secrets/
+
+# Local configuration
+.env
+*.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Logs and caches
+*.log
+.ranges/
+.cache/
+
+# Operating system files
+.DS_Store
+Thumbs.db
