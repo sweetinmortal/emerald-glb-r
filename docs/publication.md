@@ -1,8 +1,10 @@
 # Publication status
 
 The source contribution and verification reports can be published separately
-from a binary release. GitHub holds the code and issue history. SourceForge is
-the planned download host; no flashable ZIP has been published by this project.
+from a binary release. GitHub holds the code and issue history. The
+[SourceForge project](https://sourceforge.net/projects/emerald-glb-r/) was created
+on 2026-11-17 as the planned download host, with the status set to Pre-Alpha and
+links back to GitHub. No flashable ZIP has been published by this project.
 
 ## Source contribution
 

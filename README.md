@@ -71,6 +71,7 @@ See [`docs/roadmap.md`](docs/roadmap.md) for details.
 
 ## Links
 
+- Project and planned download host: [SourceForge](https://sourceforge.net/projects/emerald-glb-r/) (no flashable ZIP published yet)
 - Upstream device tree: https://github.com/emerald-lineage/android_device_xiaomi_emerald
 - Upstream issue for this variant: https://github.com/emerald-lineage/android_device_xiaomi_emerald/issues/1
 - RamDll releases: https://github.com/RamDll/emerald-ota/releases
