@@ -1,0 +1,28 @@
+{
+  "status": "SOURCE_PATCH_REVIEWED_NOT_INTEGRATED",
+  "upstream_repository": "https://github.com/AOSPA/android_hardware_xiaomi",
+  "upstream_commit": "1a3e75d36079e8ba9d1b324acdf5201157a307a6",
+  "patch_file": "dolby-unlock-migration-source.patch",
+  "patch_sha256": "18c8fa377d593f502e4e4c41bdf960c931b1b30f00b65d1fce74410c14ddc90e",
+  "input_apk_sha256": "c633a100c1e217000b35bbccc9e1732f602be03d7443df4c866c5dcdb284eba7",
+  "original_apk_signer_certificate_sha256": "240247ad7fc39d6015f0b0af8258a5f9264487c528a440f42653dec60cd1a781",
+  "shared_user_id": "android.uid.system",
+  "checks": {
+    "patch_applies_to_pinned_source": true,
+    "source_logic_review": true,
+    "corresponding_smali_candidate_assembled": true,
+    "dex_structure_valid": true,
+    "changed_existing_methods": 1,
+    "new_methods": 3,
+    "other_zip_payloads_byte_identical": 1910,
+    "manifest_byte_identical": true,
+    "kotlin_source_compiled_in_android_platform_build": false,
+    "device_runtime_test": false
+  },
+  "not_integrated_in_vanilla_ota_sha256": "40f02607109901981b1b2f1e1747abd4d2998f80501835476598dd6de664f9f1",
+  "limitations": [
+    "Dynamic unlock receiver depends on process survival until unlock; process death can defer migration until a later controller entry or boot.",
+    "The modified local APK is unsigned and cannot replace the original system shared-UID package without a compatible signer/platform signing chain.",
+    "No patched APK, keys, personal logs or proprietary binaries are included in this contribution."
+  ]
+}

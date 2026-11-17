@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "default_archives": {
+    "product": "work/redmi-note14s-20261027/ramdll-2.20-review/preparacion-wfomixm/product-overlay/experimental/product-clean-input.pax.tar",
+    "system_ext": "work/redmi-note14s-20261027/ramdll-2.20-review/preparacion-wfomixm/system-ext-overlay/system-ext-clean-input.pax.tar"
+  },
+  "core_removals": {
+    "product": [
+      {"kind": "tree", "path": "apex/com.google.android.gmssystem.prodvic.apex"},
+      {"kind": "tree", "path": "app/GoogleCalendarSyncAdapter"},
+      {"kind": "tree", "path": "app/GoogleContactsSyncAdapter"},
+      {"kind": "tree", "path": "app/PrebuiltExchange3Google"},
+      {"kind": "tree", "path": "app/SpeechServicesByGoogle"},
+      {"kind": "tree", "path": "priv-app/AndroidAutoStub"},
+      {"kind": "tree", "path": "priv-app/FamilyLinkParentalControls"},
+      {"kind": "tree", "path": "priv-app/GooglePartnerSetup"},
+      {"kind": "tree", "path": "priv-app/GoogleRestore"},
+      {"kind": "tree", "path": "priv-app/Phonesky"},
+      {"kind": "tree", "path": "priv-app/Velvet"},
+      {"kind": "tree", "path": "priv-app/Wellbeing"},
+      {"kind": "tree", "path": "etc/default-permissions/default-permissions-mtg.xml"},
+      {"kind": "tree", "path": "etc/permissions/privapp-permissions-mtg.xml"},
+      {"kind": "tree", "path": "etc/security/fsverity/gms_fsverity_cert.der"},
+      {"kind": "tree", "path": "etc/sysconfig/allowed_apex_com.google.android.gmssystem.xml"},
+      {"kind": "tree", "path": "etc/sysconfig/d2d_cable_migration_feature.xml"},
+      {"kind": "tree", "path": "etc/sysconfig/google.xml"},
+      {"kind": "tree", "path": "etc/sysconfig/sysconfig-mtg.xml"},
+      {"kind": "tree", "path": "etc/sysconfig/wellbeing.xml"},
+      {"kind": "tree", "path": "overlay/GmsOverlay.apk"},
+      {"kind": "tree", "path": "overlay/GmsSettingsOverlay.apk"},
+      {"kind": "tree", "path": "overlay/GmsSettingsProviderOverlay.apk"},
+      {"kind": "tree", "path": "overlay/GmsSetupWizardOverlay.apk"}
+    ],
+    "system_ext": [
+      {"kind": "tree", "path": "priv-app/GoogleFeedback"},
+      {"kind": "tree", "path": "priv-app/GoogleServicesFramework"},
+      {"kind": "tree", "path": "priv-app/SetupWizard"}
+    ]
+  },
+  "optional_removals": {
+    "talkback": {
+      "product": [
+        {"kind": "tree", "path": "app/talkback"}
+      ]
+    },
+    "dialer_support": {
+      "product": [
+        {"kind": "exact", "path": "framework/com.google.android.dialer.support.jar"},
+        {"kind": "glob", "pattern": "framework/oat/arm*/com.google.android.dialer.support.odex"},
+        {"kind": "glob", "pattern": "framework/oat/arm*/com.google.android.dialer.support.vdex"},
+        {"kind": "exact", "path": "etc/permissions/com.google.android.dialer.support.xml"}
+      ]
+    }
+  },
+  "inventory_only": [
+    {
+      "label": "GoogleSans font asset",
+      "scope": "product",
+      "selector": {"kind": "exact", "path": "fonts/GoogleSansFlex-Regular.ttf"},
+      "required": true
+    },
+    {
+      "label": "GoogleSans font overlay",
+      "scope": "product",
+      "selector": {"kind": "tree", "path": "overlay/FontGoogleSansFlex"},
+      "required": true
+    },
+    {
+      "label": "font customization references; kept with font assets",
+      "scope": "product",
+      "selector": {"kind": "exact", "path": "etc/fonts_customization.xml"},
+      "reference_file": "etc/fonts_customization.xml",
+      "required": true
+    }
+  ],
+  "required_retained": [
+    {"scope": "product", "selector": {"kind": "tree", "path": "app/LatinIME"}},
+    {"scope": "product", "selector": {"kind": "exact", "path": "lib/libjni_latinimegoogle.so"}},
+    {"scope": "product", "selector": {"kind": "exact", "path": "lib64/libjni_latinimegoogle.so"}},
+    {"scope": "product", "selector": {"kind": "tree", "path": "app/webview"}},
+    {"scope": "product", "selector": {"kind": "exact", "path": "etc/sysconfig/lineage-component-overrides.xml"}},
+    {"scope": "system_ext", "selector": {"kind": "tree", "path": "priv-app/LineageSetupWizard"}}
+  ],
+  "retained_with_reason": [
+    {
+      "scope": "product",
+      "selector": {"kind": "exact", "path": "etc/default-permissions/default-permissions-google.xml"},
+      "reason": "Retained pending a scoped rewrite because it grants TalkBack default permissions; TalkBack is optional and retained by default."
+    },
+    {
+      "scope": "product",
+      "selector": {"kind": "exact", "path": "etc/sysconfig/google-hiddenapi-package-allowlist.xml"},
+      "reason": "Retained because the allowlist includes the retained AOSP LatinIME package; no XML rewrite is performed in this archive-filter stage."
+    },
+    {
+      "scope": "system_ext",
+      "selector": {"kind": "exact", "path": "etc/permissions/privapp-permissions-google-system_ext.xml"},
+      "reason": "Retained because it contains permissions for retained com.android.emergency; no XML rewrite is performed in this archive-filter stage."
+    }
+  ],
+  "notes": [
+    "This stage creates filtered overlay archives only. Its report is not flashable.",
+    "Google QR provider is unavailable in this vanilla preparation.",
+    "Regenerate apex_info.pb later for the eventual image build; first boot is untested.",
+    "GoogleSans assets and etc/fonts_customization.xml are inventory-only and retained; the customization file contains many GoogleSans references.",
+    "etc/sysconfig/lineage-component-overrides.xml is deliberately retained; any stale references there are inert.",
+    "LatinIME including Google JNI, AOSP WebView, LineageSetupWizard, and all hardware/health members remain outside the removal selectors.",
+    "Optional dialer-support removal requires a dependency audit; the report records that audit as pending."
+  ]
+}

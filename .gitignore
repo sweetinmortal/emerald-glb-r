@@ -1,4 +1,6 @@
 # Build artifacts
+*.apk
+*.dex
 *.img
 *.bin
 *.zip

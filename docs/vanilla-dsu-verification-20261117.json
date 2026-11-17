@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-16",
+  "owner_confirmation_on": "2026-11-17",
+  "status": "DSU_USERSPACE_BOOT_AND_SETUP_VERIFIED",
+  "device_model": "2502FRA65G",
+  "sku": "glb_r",
+  "guest": {
+    "lineage_release": "24.0-20261106-UNOFFICIAL-emerald",
+    "boot_completed": true,
+    "device_provisioned": true,
+    "user_setup_complete": true,
+    "launcher": "Launcher3",
+    "userdata_gsi_bytes": 8589934592,
+    "userdata_gsi_gib": 8,
+    "major_gapps_present": false,
+    "gms_package_listed": false,
+    "gms_apex_present": false,
+    "retained_optional_components": [
+      "TalkBack",
+      "Google Sans font and overlay"
+    ],
+    "qualification": "This does not mean every Google-branded helper or overlay is absent."
+  },
+  "qr_scanner": {
+    "owner_confirmed_working_from_quick_settings_tile": true,
+    "deviceconfig_component": null,
+    "secure_component_setting": null,
+    "provider_in_baseline_product_inputs": {
+      "source": "Original APKs retained in the verified product-vanilla PAX archive used for candidate ZIP v1",
+      "package": "org.lineageos.aperture",
+      "exported_activity": "org.lineageos.aperture.QrScannerActivity",
+      "apk_sha256": "afed0e78a378de6d818ef96b9cf9a9e178f03b7fcc502b16eebac55dfee559eb"
+    },
+    "default_component_overlay": {
+      "target": "android",
+      "config_defaultQrCodeComponent": "org.lineageos.aperture/.QrScannerActivity",
+      "apk_sha256": "7bb01b083ebd1e1fda5f96d432388a9a50454ad206a9838f606fc44a67816af0"
+    },
+    "interpretation": "Null DeviceConfig and secure-setting values do not imply that a QR reader is missing; the owner confirmed the tile opened the scanner in DSU."
+  },
+  "host_return": {
+    "slot": "_a",
+    "magisk_version": "31100",
+    "boot_vendor_boot_vbmeta_match_pre_dsu_baseline": true,
+    "host_user_data_accessible": true,
+    "dsu_state": "installed_disabled_retained",
+    "dsu_reserved_gib_approx": 12
+  },
+  "candidate_ota": {
+    "filename": "lineage-24.0-emerald-glb_r-WFOMIXM-VANILLA-HEALTH-EXPERIMENTAL.zip",
+    "bytes": 2302608962,
+    "gib_approx": 2.14,
+    "sha256": "40f02607109901981b1b2f1e1747abd4d2998f80501835476598dd6de664f9f1",
+    "offline_ota_verification_passed": true,
+    "full_ota_boot_verified": false,
+    "ready_for_general_flash": false
+  },
+  "observed_issue": {
+    "component": "Dolby boot receiver",
+    "summary": "One first-boot receiver crash occurred before credential-encrypted storage was available to the user.",
+    "fix_status_as_of_2026_11_17": "Source patch and an unsigned review candidate prepared and statically reviewed; not integrated or device tested.",
+    "scope": "This single early-boot event does not establish that Dolby is wholly broken.",
+    "source_patch": "patches/dolby/dolby-unlock-migration-source.patch"
+  },
+  "test_boundary": [
+    "This verifies Android userspace booted and setup completed in DSU over the host's existing kernel and Magisk-patched vendor_boot.",
+    "It does not verify a full OTA boot using the candidate's clean vendor_boot, a new vbmeta root, or another device.",
+    "The candidate is not ready for general flashing."
+  ],
+  "source_records": [
+    "guest-verification.json",
+    "primary-return-verification.json",
+    "backing-readback-verification.json",
+    "Owner confirmation dated 2026-11-17 for QR tile behavior",
+    "Original APKs retained in the verified product-vanilla PAX archive for candidate ZIP v1"
+  ]
+}

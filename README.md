@@ -5,6 +5,8 @@ Unofficial LineageOS 24.0 notes and tooling for the **Redmi Note 14S global** (`
 > **Status: experimental, one device tested. No public flashable build is provided yet.**
 > This is not an official LineageOS, Xiaomi, RamDll, or emerald-lineage project.
 
+An experimental vanilla candidate was generated and verified offline on 2026-11-16. It also completed Android userspace setup in a DSU guest on that date; on 2026-11-17 the device owner confirmed that the Quick Settings QR scanner worked there. This exercises userspace over the host's existing kernel and Magisk-patched `vendor_boot`, not a full OTA boot with the candidate's clean `vendor_boot`. The [preparation notes](docs/vanilla.md) cover the removal tool, retained optional components and verification evidence. The vanilla candidate is not ready for general flashing. The tested configuration below describes the earlier non-vanilla working installation.
+
 ## What this is
 
 This repository documents a community test of LineageOS 24.0 running on the Redmi Note 14S global while keeping the stock `OS3.0.306.0.WFOMIXM` vendor and kernel 6.12.30. It is based on the RamDll 2.20 build and is intended to become the home for:

@@ -13,9 +13,17 @@ This is an unofficial community project. It is not affiliated with, endorsed by,
 - **emerald-lineage** — upstream device tree: https://github.com/emerald-lineage/android_device_xiaomi_emerald
 - **LineageOS** — https://lineageos.org
 - **Android Open Source Project** — https://source.android.com
+- **AOSPA** — the Dolby source patch targets its Apache-2.0 implementation:
+  https://github.com/AOSPA/android_hardware_xiaomi
 
 ## Licensing note
 
-The upstream device tree does not currently declare an explicit license. This repository contains original documentation and tooling only. Patches intended for upstream are provided for review under the upstream project's terms. If you reuse upstream code, check with its authors first.
+The upstream emerald device tree did not declare an explicit license at the
+recorded review. This repository contains original documentation and tooling,
+plus the Dolby source patch under `patches/dolby/`, which follows AOSPA's
+Apache-2.0 license. The patch's pinned upstream version, attribution and test
+limits are documented alongside it. Other patches intended for upstream follow
+their respective upstream terms; no license for proprietary binaries is granted
+by this repository.
 
 Third-party trademarks and proprietary components remain the property of their respective owners.

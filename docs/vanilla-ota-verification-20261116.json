@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-16",
+  "status": "OFFLINE_OTA_VERIFIED_HARDWARE_UNTESTED",
+  "device_model": "2502FRA65G",
+  "sku": "glb_r",
+  "stock_base": "OS3.0.306.0.WFOMIXM",
+  "donor_release": "RamDll 2.20",
+  "ota_file": "lineage-24.0-emerald-glb_r-WFOMIXM-VANILLA-HEALTH-EXPERIMENTAL.zip",
+  "ota_bytes": 2302608962,
+  "ota_sha256": "40f02607109901981b1b2f1e1747abd4d2998f80501835476598dd6de664f9f1",
+  "approved_plan_sha256": "126775b34571e0ea0af7d2808305b3e11223f48c40800ebce7a852d1fbf7394f",
+  "reviewed_bundle_sha256": "4efec8f5f2884b1dafa9f86db349eafcdb459f176b8407bdf7e25b1135a8299d",
+  "partitions": {
+    "boot": {
+      "bytes": 67108864,
+      "sha256": "ab65b9073d4a6356dd59a50d13860ef7583896aebb0433e3228e1a6e5d8bb930"
+    },
+    "dtbo": {
+      "bytes": 8388608,
+      "sha256": "bcf2689e91b0d929be20d794c7f2d797718ad734e61bea24b3de0e80c1ce865e"
+    },
+    "mi_ext": {
+      "bytes": 957632512,
+      "sha256": "8d58aa806d3dd4a078611cba83c53b021917a92c2b50505a2e28cec05b387a64"
+    },
+    "odm_dlkm": {
+      "bytes": 348160,
+      "sha256": "0c2782432531f7a1f3cd494756780dc24cb9cbcaf04ea2ffc502aaea99acd05e"
+    },
+    "product": {
+      "bytes": 2565718016,
+      "sha256": "b3f1f9b9efa780a1a457bc7a98a343dc96286da7d8fe62e68a303d8f2b544d76"
+    },
+    "system": {
+      "bytes": 1270792192,
+      "sha256": "70ab912158ddf917f7135981514e1d738d2c595b6c707dbe8dde2ea0afccd84c"
+    },
+    "system_dlkm": {
+      "bytes": 8044544,
+      "sha256": "c3e10a0b08cd7845453482e11b5fa8a3cbb182559100d0617b259ad5c61efcb3"
+    },
+    "system_ext": {
+      "bytes": 653651968,
+      "sha256": "70c822e55678f57988ddf34ffde5b904da2aa4a36be0e0700ab7eba89c6b10fc"
+    },
+    "vbmeta": {
+      "bytes": 8192,
+      "sha256": "367b5ef5fdc82de0b2995000f3c473b425ebc51e9e5548ea5ed035f437baea83"
+    },
+    "vbmeta_system": {
+      "bytes": 4096,
+      "sha256": "c2a41659d20b2bec3f8ea041a1adf058b6b7da847d7e06c21b1d11048c0b18e5"
+    },
+    "vbmeta_vendor": {
+      "bytes": 4096,
+      "sha256": "6aa6cb30a1ce2bab53b3ebc017fe4efeb09c13b35911449895bea1b383878676"
+    },
+    "vendor": {
+      "bytes": 775196672,
+      "sha256": "f76eec0c78e262b5fc4c4aa6e2b252298297900f5b6a1ac93a3189787242bed8"
+    },
+    "vendor_boot": {
+      "bytes": 67108864,
+      "sha256": "fb26b0875c4ee15a27742eaf282d460d2952e249e8106aaa6198a3c8f276c4bc"
+    },
+    "vendor_dlkm": {
+      "bytes": 15253504,
+      "sha256": "209697de53096e46ae058e0942134f51ca65025959db937a49b5c68b84ab702b"
+    }
+  },
+  "excluded_firmware": [
+    "dpm",
+    "gz",
+    "lk",
+    "mcupm",
+    "md1img",
+    "pi_img",
+    "preloader_raw",
+    "scp",
+    "spmfw",
+    "sspm",
+    "tee"
+  ],
+  "zip_and_payload_signatures_verified": true,
+  "native_payload_and_metadata_signatures_verified": true,
+  "native_verifier_returncode": 0,
+  "ota_certificate_sha256": "c9d1b442e704dc1bf250cdc65d33b1db7ed0c93c002d97f7d6c0e2330a5e1947",
+  "payload_replayed_and_hashed": true,
+  "exact_apex_metadata_verified": true,
+  "apex_package_count": 41,
+  "gms_apex_absent": true,
+  "vendor_health_preserved": true,
+  "clean_vendor_boot": true,
+  "root_integrated": false,
+  "optional_retained": [
+    "TalkBack",
+    "dialer support library",
+    "Google Sans font and overlay"
+  ],
+  "first_boot_tested": false,
+  "ready_to_flash": false
+}

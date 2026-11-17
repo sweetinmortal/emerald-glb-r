@@ -1,0 +1,34 @@
+{
+  "flashable": false,
+  "images": {
+    "product": {
+      "bytes": 373563392,
+      "contents_owners_modes_mtimes_links_xattrs_equal": true,
+      "file": "product.unsigned.img",
+      "filesystem_uuid": "202c7a00-6b86-5128-b405-e073f801e99e",
+      "input_tar_sha256": "c1f532c94448ea183492808b3d1a0c81f7bc65c8e53dbf67edb7486e195c9652",
+      "sha256": "8fdb7334eb8ec97345392d11018a29ac38cfe019ef22bc434657d734de9a3d4a",
+      "verified_tree_members": 609
+    },
+    "system_ext": {
+      "bytes": 275206144,
+      "contents_owners_modes_mtimes_links_xattrs_equal": true,
+      "file": "system_ext.unsigned.img",
+      "filesystem_uuid": "109c8c37-1abc-5aac-b087-e8dab6399185",
+      "input_tar_sha256": "a0b4e872bc3bd6b1d104bf6dc42f007ce1e12eba23e35ce84455dedc69669ac2",
+      "sha256": "9ebb460a74ec7b95a674d2ee92b984ee8ebdf4be7cdb5e4f7e733d923545521a",
+      "verified_tree_members": 3618
+    }
+  },
+  "plan_sha256": "126775b34571e0ea0af7d2808305b3e11223f48c40800ebce7a852d1fbf7394f",
+  "remaining": [
+    "target-files/APEX metadata regeneration",
+    "AVB and OTA signing and verification",
+    "initial setup and hardware boot test"
+  ],
+  "status": "UNSIGNED_EROFS_TREES_VERIFIED",
+  "tools_sha256": {
+    "fsck.erofs": "dd61160aa49a3d63da41ed2ff13e0e42be37d4a09a88f9d459002b2ca0cc2db7",
+    "mkfs.erofs": "b254640c783f9626b81b90d483c35d0e998c42113ba1259d1f3f5accfd0dc8e0"
+  }
+}
