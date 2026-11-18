@@ -8,6 +8,10 @@ for provenance; it does not download or create those archives. Those defaults
 are resolved from this repository root, without assuming a particular checkout
 depth on the computer.
 
+The [stock kernel preparation tool](../docs/stock-kernel-inputs.md) assembles and
+verifies the 6.12 kernel, device trees and module inputs from local Xiaomi OTA
+images. It keeps proprietary inputs and outputs on the build machine.
+
 The plan is to publish sanitized versions of the packaging and verification helpers used for the test:
 
 - input hash verification;

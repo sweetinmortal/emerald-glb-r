@@ -11,7 +11,9 @@ links back to GitHub. No flashable ZIP has been published by this project.
 The repository contains the Google-app removal tool and its manifest/tests,
 sanitized filesystem/OTA/DSU results, compatibility notes and the reviewed
 Dolby source patch. It contains no private signing material, firmware images
-or application binaries. The Dolby patch remains separate from the candidate.
+or application binaries. The Dolby patch remains separate from the candidate. The
+[stock kernel preparation tool](stock-kernel-inputs.md) uses local images from
+Xiaomi's OTA to assemble and verify the matched 6.12 inputs.
 
 The archive-filtering steps are portable with explicit archive paths. The
 manifest's historical default paths document its original inputs. The remaining
@@ -44,10 +46,10 @@ The release gate therefore remains closed. Before an end-user download:
 2. Document the required recovery/boot artifacts and exact installation steps
    from that successful test. There are no public flashing commands in this
    document while the procedure remains unvalidated.
-3. Finish the input/source/commit and redistribution inventory for the included
-   kernel, modules, vendor and other third-party components. Exclusion of the
-   eleven named firmware partitions does not make the ZIP free of all
-   proprietary firmware or vendor binaries.
+3. Resolve the remaining source and license questions in the
+   [binary provenance review](redistribution.md). The payload excludes the
+   eleven named firmware partitions and still includes proprietary components
+   in vendor and other images.
 4. Publish release notes, known issues and SHA256SUMS alongside the approved
    artifact, with an explicit experimental status and links to the source.
 
