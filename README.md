@@ -65,13 +65,13 @@ The exact patch series will be published in `patches/` before a PR is sent upstr
 - [ ] Longer soak test (calls, camera, video, charging, suspend)
 - [ ] Minimal patch series for upstream review
 - [ ] Draft PR to `emerald-lineage/android_device_xiaomi_emerald`
-- [ ] Public build, only if licensing and redistribution are clear
+- [ ] General-use build with validated recovery and documented redistribution rights
 
 See [`docs/roadmap.md`](docs/roadmap.md) for details.
 
 ## Links
 
-- Project and planned download host: [SourceForge](https://sourceforge.net/projects/emerald-glb-r/) (no flashable ZIP published yet)
+- [Experimental ZIP and test notes on SourceForge](https://sourceforge.net/projects/emerald-glb-r/files/experimental-20261118/)
 - Upstream device tree: https://github.com/emerald-lineage/android_device_xiaomi_emerald
 - Upstream issue for this variant: https://github.com/emerald-lineage/android_device_xiaomi_emerald/issues/1
 - RamDll releases: https://github.com/RamDll/emerald-ota/releases

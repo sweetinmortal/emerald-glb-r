@@ -1,10 +1,8 @@
 # Publication status
 
-The source contribution and verification reports can be published separately
-from a binary release. GitHub holds the code and issue history. The
-[SourceForge project](https://sourceforge.net/projects/emerald-glb-r/) was created
-on 2026-11-17 as the planned download host, with the status set to Pre-Alpha and
-links back to GitHub. No flashable ZIP has been published by this project.
+GitHub holds the code, test evidence and issue history. The Pre-Alpha
+SourceForge project hosts the [experimental tester release](https://sourceforge.net/projects/emerald-glb-r/files/experimental-20261118/).
+The release folder contains the ZIP, its test scope and SHA256SUMS.
 
 ## Source contribution
 
@@ -24,7 +22,7 @@ image rebuilding, signing and packaging helpers still need a portable public
 interface; this repository does not yet reproduce the entire ROM from a clean
 checkout. Original build reports keep their historical timestamps and scope.
 
-## Candidate binary
+## Experimental tester ZIP
 
 - File: `lineage-24.0-emerald-glb_r-WFOMIXM-VANILLA-HEALTH-EXPERIMENTAL.zip`
 - Bytes: `2302608962` (about 2.14 GiB)
@@ -41,7 +39,7 @@ That guest used the host's kernel and Magisk-patched vendor_boot. It did not
 validate recovery installation of the complete ZIP, the candidate's clean
 vendor_boot, a new root vbmeta chain or the Virtual A/B merge path.
 
-The release gate therefore remains closed. Before an end-user download:
+The experiment is available to testers. Before recommending general installation:
 
 1. Validate the complete installation and return/recovery procedure on the
    exact supported hardware, with data loss explicitly acceptable for that test.
@@ -53,8 +51,8 @@ The release gate therefore remains closed. Before an end-user download:
    [binary provenance review](redistribution.md). The payload excludes the
    eleven named firmware partitions and still includes proprietary components
    in vendor and other images.
-4. Publish release notes, known issues and SHA256SUMS alongside the approved
-   artifact, with an explicit experimental status and links to the source.
+4. Update the release notes and SHA256SUMS when a fully tested artifact
+   replaces this experimental ZIP.
 
 Dolby's first-boot migration crash and the open thermal investigation are known
 limitations. The source fix for Dolby is not in the ZIP. Its original signed APK
@@ -66,5 +64,4 @@ SourceForge's [release-file documentation](https://sourceforge.net/p/forge/docum
 describes resumable transfers and a 10 GB per-file mirror limitation. This ZIP
 fits without splitting. The project must also meet SourceForge's
 [open-source hosting requirements](https://sourceforge.net/p/forge/documentation/Create%20a%20New%20Project/).
-An account/project and download packaging do not, by themselves, satisfy the
-installation or redistribution gates above.
+The published test scope and the remaining validation are documented above.
