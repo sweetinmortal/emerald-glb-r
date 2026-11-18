@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<manifest>
+    <remote name="wfomixm-lineageos" fetch="https://github.com/" />
+    <project name="LineageOS/android_hardware_mediatek"
+             path="hardware/mediatek" remote="wfomixm-lineageos"
+             revision="32bd412433ef0d58c3484769d9789987407627fc" />
+    <project name="LineageOS/android_device_mediatek_sepolicy_vndr"
+             path="device/mediatek/sepolicy_vndr" remote="wfomixm-lineageos"
+             revision="d76ed9b3f512decbb68f6641db86230aa595996e" />
+</manifest>

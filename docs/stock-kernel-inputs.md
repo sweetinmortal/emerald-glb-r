@@ -13,6 +13,29 @@ images from the OTA's `payload.bin`.
 | Boot images | `boot.img`, `vendor_boot.img`, `dtbo.img` |
 | Module images | `system_dlkm.img`, `vendor_dlkm.img`, `odm_dlkm.img` |
 
+Alternatively, start from the
+[Xiaomi factory fastboot archive for the same version](https://bigota.d.miui.com/OS3.0.306.0.WFOMIXM/emerald_r_global_images_OS3.0.306.0.WFOMIXM_20260922.0000.00_16.0_global_65f2532a24.tgz).
+This route requires Linux AOSP OTA tools with `simg2img` and `lpunpack`
+under `bin/` and their libraries under `lib64/`. Allow 20 GiB of free
+workspace beyond the archive on a Linux filesystem. Use a new output
+directory name under an existing parent directory.
+
+```sh
+python3 scripts/stage-wfomixm-fastboot.py \
+  --factory-archive /path/to/WFOMIXM-factory.tgz \
+  --otatools /path/to/aosp-otatools \
+  --output /path/to/stock-images
+```
+
+The tool verifies the archive's SHA-256 before extraction. It takes the
+six boot and AVB images directly from the archive and five logical
+images from its populated A partition set in `super.img`. It checks all
+eleven against the full OTA input manifest and records them in
+`verified-stock.json`. The reference run against Xiaomi's complete archive
+matched all eleven sizes and hashes, then checked `vendor.img` with
+`fsck.erofs`. Point both kernel preparation arguments below to the
+resulting `stock-images` directory.
+
 The two directory arguments can point to the same folder when all six images
 were extracted together. The tool checks each image's SHA-256 against the exact
 stock version this port uses before processing it. Use an existing parent

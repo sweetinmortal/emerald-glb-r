@@ -22,13 +22,23 @@ and mount configuration, recovery modules and VINTF checks.
 | Four additional modules in the 305 tree | Review the recovery purpose and dependencies against 306 before inclusion |
 
 These comparisons use Git blob identities computed from the verified 306
-inputs and the pinned 305 tree. They establish file identity only.
-The generic kernel matches the donor's recorded Google GKI release
-identifier and Android CI build 13847919. The donor documents a direct
-Google artifact comparison for 305. The original Google download and
-complete matching OEM module source remain separate provenance checks.
+inputs and the pinned 305 tree. A separate download of Google's GKI
+`Image.lz4` from Android CI build 13847919 matched the 306 stock
+`boot.img` kernel. Both were 18,833,091 bytes with SHA-256
+`e4121682a5dc9e637710642eb4daaea57697f3b501a959715c4cc323f3e15e35`.
+All 82 stock `system_dlkm` modules also matched the same Google build's
+flattened module archive by name and SHA-256. The other 408 module files
+report two different build revisions in their module metadata. Xiaomi
+lists its public Redmi Note 14S kernel and MediaTek modules under
+`emerald_r-u-oss` for the Android U base. The kernel branch is 5.10.209.
+Corresponding source for the 306 OEM modules remains unverified.
 [Community 305 GKI input tree](https://github.com/emerald-lineage/android_device_xiaomi_emerald-kernel/tree/b1b898ae09c29967473099dacb043fd4a0891df2),
-[Android GKI tag](https://android.googlesource.com/kernel/common/+/refs/tags/android16-6.12-2025-07_r7).
+[Google GKI artifact](https://ci.android.com/builds/submitted/13847919/kernel_aarch64/latest/Image.lz4),
+[Google module archive](https://ci.android.com/builds/submitted/13847919/kernel_aarch64/latest/system_dlkm_staging_archive.tar.gz),
+[Google build manifest](https://ci.android.com/builds/submitted/13847919/kernel_aarch64/latest/manifest_13847919.xml),
+[Android GKI tag](https://android.googlesource.com/kernel/common/+/refs/tags/android16-6.12-2025-07_r7),
+[Public Xiaomi kernel](https://github.com/MiCode/Xiaomi_Kernel_OpenSource/blob/b183d9cceaeb4329781b597e4b520ea6a2687c7a/Makefile),
+[Public MediaTek modules](https://github.com/MiCode/MTK_kernel_modules/tree/30a11c8342794e1b681f62939aff836be6ef9278).
 
 Xavero's 24.0 tree is another starting point. Its referenced kernel and
 vendor dependencies did not resolve for an anonymous check on the review
@@ -38,6 +48,56 @@ Codeberg vendor repository API. The available 23.2 kernel is a different
 corresponding revisions before a clean source build is reproducible.
 [Xavero device tree](https://github.com/xaveroprjkt/device_xiaomi_emerald/tree/1d0b28d97f48852f7f298e6e5eb8a6a93fba29b2),
 [Android 17 manifest](https://github.com/xaveroprjkt/local_manifests_emerald/blob/8c04c529f3ecc8e5e22c6bfc5e7ccc0299e1fed2/local_manifests.xml).
+
+## LineageOS 24.0 bring-up inputs
+
+Use the [LineageOS 24.0 base manifest](https://github.com/LineageOS/android/blob/913c6baa35ffa32be9ae33368cac69dbec6ead4b/default.xml).
+The [local manifest](../source-port/mediatek-lineage-24.0.xml) adds the
+official MediaTek hardware and vendor policy repositories at explicit
+commits. The following preflight was run in a new checkout on a Linux
+filesystem. Set `contribution_repo` to the absolute path of this repository.
+
+```sh
+repo init -u https://github.com/LineageOS/android.git \
+  -b 913c6baa35ffa32be9ae33368cac69dbec6ead4b --depth=1 --no-clone-bundle
+mkdir -p .repo/local_manifests
+cp "$contribution_repo/source-port/mediatek-lineage-24.0.xml" \
+  .repo/local_manifests/wfomixm-mediatek.xml
+repo sync --current-branch --no-tags --no-clone-bundle --fail-fast -j2 \
+  hardware/mediatek device/mediatek/sepolicy_vndr tools/extract-utils vendor/lineage
+```
+
+Both MediaTek commits matched the manifest. The preflight also checked out
+`tools/extract-utils` at `9d3f68fc8d245b7ae72a9bd63ba0ab59e31579f4`
+and `vendor/lineage` at `5a1814d916321aecb72d60d13b5e52bc719251bd`.
+The latter sets the source branch's target release to `cp2a`. The device
+product, kernel integration and vendor support are still in preparation.
+
+The [306 mount exclusions](../source-port/wfomixm-306/skip_mount.cfg)
+contain the same 21 MIUI overlay destinations from both stock vendor
+fstabs. The exclusions retain the base `mi_ext` mount. Install the file
+through `PRODUCT_COPY_FILES` to
+`$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/config/skip_mount.cfg`.
+LineageOS's `libfstab` uses this file to filter normal-boot fstab reads
+when it is available. The first-stage mount loop defers overlay mounts.
+Verify the final mount table on a source-built system.
+[LineageOS fstab reader](https://github.com/LineageOS/android_system_fs_fs_mgr/blob/b1dd5c6ccee0aa3019020925204ed72942a822be/libfstab/fstab.cpp),
+[first-stage mount implementation](https://github.com/LineageOS/android_system_core/blob/65d661b1a536701e8b118be4e9728d7b5ca727c9/init/first_stage_mount.cpp).
+
+A pilot using the official `extract-utils` copied
+`vendor/etc/fstab.mt6789` and `vendor/etc/vintf/manifest.xml` from a
+WFOMIXM 306 stock dump. Both extracted files matched their inputs byte for
+byte. The tool generated `Android.bp` and `emerald-vendor.mk`. The
+complete proprietary file list and extraction from a running
+LineageOS build remain to be tested.
+[LineageOS guide to proprietary files](https://github.com/LineageOS/lineage_wiki/blob/main/pages/internal/working_with_blobs.md).
+
+Factory `super.img` records 7,516,192,768 bytes for the physical device
+and a maximum of 7,505,707,008 bytes for each `main` group. The populated
+A set has `odm_dlkm`, `product`, `system`, `system_dlkm`, `system_ext`,
+`vendor`, `vendor_dlkm` and `mi_ext`. The matching B entries have zero
+allocated bytes in the factory image. Use these values when checking the
+new build's super metadata and plan an explicit both-slot test on hardware.
 
 ## Design to validate
 

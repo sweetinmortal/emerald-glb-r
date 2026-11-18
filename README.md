@@ -95,4 +95,4 @@ Original documentation and tooling in this repository are licensed under the Apa
 
 ## Resumen en español
 
-Repositorio no oficial con notas y herramientas para LineageOS 24.0 en el **Redmi Note 14S global** (`2502FRA65G`, SKU `glb_r`) usando la base stock **WFOMIXM 306**. Probado en un solo equipo; todavía no hay ZIP público ni build oficial. Los cambios reproducibles, el informe de pruebas y los scripts se publicarán aquí antes de mandar el PR a `emerald-lineage`.
+Repositorio no oficial con notas y herramientas para LineageOS 24.0 en el **Redmi Note 14S global** (`2502FRA65G`, SKU `glb_r`) usando la base stock **WFOMIXM 306**. Probado en un solo equipo. El [ZIP experimental](https://sourceforge.net/projects/emerald-glb-r/files/experimental-20261118/) está publicado y el [port desde código fuente](docs/source-port-readiness.md) está en preparación.

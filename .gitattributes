@@ -1,1 +1,2 @@
 patches/dolby/*.patch text eol=lf whitespace=-blank-at-eol
+source-port/wfomixm-306/skip_mount.cfg text eol=lf
