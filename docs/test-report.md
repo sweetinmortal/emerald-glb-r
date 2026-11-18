@@ -64,8 +64,10 @@ The charging-control OTA upgraded the existing LineageOS installation from
 slot B to slot A on the same Redmi Note 14S and WFOMIXM base. It retained the
 donor's Google apps. Recovery sideload finished without formatting or clearing
 userdata. Android booted in slot A and the charging-control service and its
-Settings screen were verified. App-by-app data and account-session retention
-were not independently verified during this run.
+Settings screen were verified. A subsequent check on 2026-11-18 used the
+same installation. The device owner opened the app selected for this test
+and confirmed its existing data. The owner also confirmed that Lawnchair
+kept its home-screen layout. This check covered those two apps.
 
 The tested ZIP has SHA-256
 `39f0ac044f1ae91c0161a28e0deec2ff814b76f55d50260bea1b67ba6b41e842`.
@@ -76,6 +78,10 @@ also matched the separate MindTheGapps release byte for byte.
 [MindTheGapps 17 ARM64 release](https://github.com/MindTheGapps/17.0.0-arm64/releases/tag/MindTheGapps-17.0.0-arm64-20261022_132445).
 
 Four Google overlays had different resource contents and signing certificates,
-so this comparison does not establish direct add-on compatibility. The
-[vanilla test](vanilla.md) used DSU with separate data. Full installation of
-the vanilla ZIP remains untested.
+so this comparison does not establish direct add-on compatibility.
+
+Recombining the vanilla archives with the 41 original Google entries reproduced
+the exact Health input archives for product and system_ext. The follow-up
+therefore used the existing Health + GApps installation. The
+[separate vanilla test](vanilla.md) used DSU with its own data. Full recovery
+installation of the vanilla ZIP remains untested.
