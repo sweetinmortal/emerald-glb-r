@@ -14,6 +14,7 @@ import tarfile
 import tempfile
 
 import degoogle
+from stock_erofs import TAR, mount_command
 
 
 META = Path(__file__).with_name("ota-inputs.json")
@@ -24,40 +25,6 @@ UPDATER = "priv-app/Updater"
 CONFIG_DIR = "etc/init/config"
 CONFIG = CONFIG_DIR + "/skip_mount.cfg"
 UPDATER_PROPERTY = b"lineage.updater.uri=https://raw.githubusercontent.com/RamDll/emerald-ota/main/emerald/{incr}.json"
-
-MOUNT = r"""
-set -eu
-mount --make-rprivate /
-mounted=$(mktemp -d)
-cleanup() {
-    cd /
-    if mountpoint -q "$mounted"; then umount "$mounted"; fi
-    rmdir "$mounted"
-}
-trap cleanup EXIT
-mount -t erofs -o ro,loop,nodev,nosuid,noexec "$1" "$mounted"
-cd "$mounted"
-shift
-"$@"
-"""
-
-TAR = (
-    "tar", "--format=pax", "--sort=name", "--numeric-owner", "--xattrs",
-    "--xattrs-include=*", "--pax-option=delete=atime,delete=ctime", "-cf", "-", ".",
-)
-
-
-def mount_command(distro, image, *command):
-    prefix = []
-    image_path = str(image)
-    if distro:
-        if len(image.drive) != 2 or image.drive[1] != ":":
-            raise ValueError("WSL mode requires a Windows drive path")
-        image_path = f"/mnt/{image.drive[0].lower()}{image.as_posix()[2:]}"
-        prefix = ["wsl.exe", "-d", distro, "-u", "root", "--exec"]
-    return [*prefix, "unshare", "--mount", "sh", "-c", MOUNT, "mount-erofs",
-            image_path, *command]
-
 
 def verify_image(bundle, source, name, manifest):
     path = bundle / source / (name + ".img")

@@ -70,8 +70,9 @@ repo sync --current-branch --no-tags --no-clone-bundle --fail-fast -j2 \
 Both MediaTek commits matched the manifest. The preflight also checked out
 `tools/extract-utils` at `9d3f68fc8d245b7ae72a9bd63ba0ab59e31579f4`
 and `vendor/lineage` at `5a1814d916321aecb72d60d13b5e52bc719251bd`.
-The latter sets the source branch's target release to `cp2a`. The device
-product, kernel integration and vendor support are still in preparation.
+The latter sets the source branch's target release to `cp2a`. The
+device product below resolves with those dependencies in a partial 24.0
+checkout.
 
 The [306 mount exclusions](../source-port/wfomixm-306/skip_mount.cfg)
 contain the same 21 MIUI overlay destinations from both stock vendor
@@ -98,6 +99,85 @@ A set has `odm_dlkm`, `product`, `system`, `system_dlkm`, `system_ext`,
 `vendor`, `vendor_dlkm` and `mi_ext`. The matching B entries have zero
 allocated bytes in the factory image. Use these values when checking the
 new build's super metadata and plan an explicit both-slot test on hardware.
+
+## Configure the WFOMIXM product
+
+The [device configuration](../source-port/wfomixm-306) provides
+`lineage_emerald_wfomixm` for the global Redmi Note 14S. It uses intact
+stock vendor and DLKM images during bring-up. It keeps ODM under
+`vendor/odm`, requires the 199 platform ramdisk modules and uses the stock
+boot v4 layout. Its AVB settings use Android test keys. Recovery, signing
+and installation still need verification against the generated images.
+
+On Linux, prepare the verified factory images and the kernel bundle with
+the [stock input tools](stock-kernel-inputs.md). Point the following
+variables to those local inputs and use a new path for the prepared fstabs.
+Keep the stock images and generated fstabs outside the public repository.
+
+```sh
+export EMERALD_WFOMIXM_IMAGES=/absolute/path/to/stock-images
+export EMERALD_WFOMIXM_KERNEL=/absolute/path/to/stock-kernel-bundle
+export EMERALD_WFOMIXM_FSTABS=/absolute/path/to/new-fstabs
+python3 "$contribution_repo/scripts/stage-wfomixm-fstabs.py" \
+  --kernel-bundle "$EMERALD_WFOMIXM_KERNEL" --output "$EMERALD_WFOMIXM_FSTABS"
+```
+
+This prepares the platform and recovery fstabs by removing the same 22
+stock overlay rows from each. The 22nd target is `/system/framework`.
+The remaining bytes are identical, including the base `mi_ext`, user data
+and metadata mounts. The separate vendor-fstab policy has 21 destinations.
+
+For the partial-checkout configuration test, sync the host build tools
+below in addition to the four projects above. In a full checkout these
+are already provided by the manifest. Copy the device files into a new
+`device/xiaomi/emerald` directory.
+
+```bash
+repo sync --current-branch --no-tags --no-clone-bundle --fail-fast -j3 \
+  build/make build/soong build/blueprint build/release \
+  prebuilts/go/linux-x86 prebuilts/build-tools prebuilts/bazel/common \
+  external/golang-protobuf external/starlark-go external/pogreb \
+  frameworks/native toolchain/pgo-profiles device/lineage/sepolicy \
+  system/sepolicy external/avb
+mkdir -p device/xiaomi/emerald
+cp "$contribution_repo/source-port/wfomixm-306/"{AndroidProducts.mk,BoardConfig.mk,lineage_emerald_wfomixm.mk,skip_mount.cfg} \
+  device/xiaomi/emerald/
+export OUT_DIR=out-emerald-config SKIP_KERNEL_BUILD=true ROOMSERVICE_DRYRUN=true
+source build/envsetup.sh
+lunch lineage_emerald_wfomixm cp2a userdebug
+```
+
+The configuration run resolved Android 17 SDK 37, launch API 34, boot
+header v4, the eight logical partitions in `main` and the 14 A/B OTA
+partitions. Platform SELinux is `202604` and includes a compatibility
+mapping for the stock vendor's `202504`. The resolved product installs
+both the ramdisk fstab and the system_ext mount policy. The source target
+still needs a full build, VINTF checks against that build, and hardware
+validation.
+
+## Export stock vendor and embedded ODM
+
+The [vendor export script](../scripts/export-wfomixm-vendor.py) reads the
+verified 306 `vendor.img` through a read-only EROFS mount and writes a
+local PAX archive with Android ownership, modes and extended attributes.
+It requires GNU tar and permission to mount an EROFS image in a private
+mount namespace. WSL users can pass `--wsl-distro` from Windows Python to
+select a Linux distribution with those tools.
+
+```sh
+sudo python3 scripts/export-wfomixm-vendor.py \
+  --vendor-image "$EMERALD_WFOMIXM_IMAGES/vendor.img" \
+  --output /absolute/path/to/new-vendor-export
+```
+
+The real stock export verified 5,140 files, 740 links and 343 directories,
+including embedded ODM. `vendor-inventory.json` records file SHA-256
+hashes, literal link targets and SELinux labels. Use this local inventory
+to choose the proprietary build inputs and review link and ELF
+dependencies. The complete `extract-utils` install list and source-built
+vendor rules are still pending. Bring-up with the intact image also needs
+the matching vendor and embedded ODM VINTF and APEX metadata in
+`target-files` before running `check_target_files_vintf`.
 
 ## Design to validate
 
