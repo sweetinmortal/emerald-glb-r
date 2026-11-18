@@ -15,6 +15,9 @@ or application binaries. The Dolby patch remains separate from the candidate. Th
 [stock kernel preparation tool](stock-kernel-inputs.md) uses local images from
 Xiaomi's OTA to assemble and verify the matched 6.12 inputs.
 
+The [local repack procedure](local-repack.md) stages verified input images
+and prepares the product and system_ext archives.
+
 The archive-filtering steps are portable with explicit archive paths. The
 manifest's historical default paths document its original inputs. The remaining
 image rebuilding, signing and packaging helpers still need a portable public

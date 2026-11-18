@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8'?>
+<compatibility-matrix version="9.0" type="framework">
+  <hal format="aidl">
+    <name>android.hardware.vibrator</name>
+    <version>1</version>
+    <interface>
+      <name>IVibrator</name>
+      <instance>vibratorfeature</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.dolby.dms</name>
+    <version>1</version>
+    <interface>
+      <name>IDms</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.nxp.nxpnfc_aidl</name>
+    <version>1</version>
+    <interface>
+      <name>INxpNfc</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.tms.tmsnfc_aidl</name>
+    <version>1</version>
+    <interface>
+      <name>ITmsNfc</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.cld_aidl</name>
+    <version>1</version>
+    <interface>
+      <name>ICld</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.displayfeature_aidl</name>
+    <version>2</version>
+    <interface>
+      <name>IDisplayFeature</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.fingerprintextension</name>
+    <version>1</version>
+    <interface>
+      <name>IXiaomiFingerprint</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.fx.tunnel</name>
+    <version>1</version>
+    <interface>
+      <name>IMiFxTunnel</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.misauth</name>
+    <version>1</version>
+    <interface>
+      <name>IMiSharedAuth</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.mrm</name>
+    <version>1</version>
+    <interface>
+      <name>IMiCertificate</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.mrm</name>
+    <version>1</version>
+    <interface>
+      <name>IMrm</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.mrm</name>
+    <version>1</version>
+    <interface>
+      <name>IMrmRemoteAuth</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hardware.soterservice</name>
+    <version>1</version>
+    <interface>
+      <name>ISoter</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.hw.touchfeature</name>
+    <version>1</version>
+    <interface>
+      <name>ITouchFeature</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+  <hal format="aidl">
+    <name>vendor.xiaomi.sensor.citsensorservice</name>
+    <version>1</version>
+    <interface>
+      <name>ICitSensorService</name>
+      <instance>default</instance>
+    </interface>
+  </hal>
+</compatibility-matrix>

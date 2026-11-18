@@ -12,6 +12,9 @@ The [stock kernel preparation tool](../docs/stock-kernel-inputs.md) assembles an
 verifies the 6.12 kernel, device trees and module inputs from local Xiaomi OTA
 images. It keeps proprietary inputs and outputs on the build machine.
 
+The [local repack procedure](../docs/local-repack.md) checks the original OTA
+inputs, extracts the selected images and prepares the PAX inputs for filtering.
+
 The plan is to publish sanitized versions of the packaging and verification helpers used for the test:
 
 - input hash verification;

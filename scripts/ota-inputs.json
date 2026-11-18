@@ -1,0 +1,79 @@
+{
+  "donor": {
+    "images": {
+      "product": {
+        "sha256": "7a4edc853e064621c828f5a306ebef4460a4e10b18c64cb6360390c67d652eff",
+        "size_bytes": 2565718016
+      },
+      "system": {
+        "sha256": "d8accd93143af9299a1812b8d9693382dd6f76ca8c4a1581764b75d12839b018",
+        "size_bytes": 1270792192
+      },
+      "system_ext": {
+        "sha256": "2a45a1ec5b8e737f9865d03c0f5733d904c418fc352f5c206ec633b9b02ee736",
+        "size_bytes": 653651968
+      },
+      "vendor_boot": {
+        "sha256": "5e34d15d297a25fc73eb48d74cabd689d4d69d74dd632103d27e5582f09d3168",
+        "size_bytes": 67108864
+      }
+    },
+    "sha256": "f151a65925480dca3cf6a7fe5aa8f9d23e192f863f4233363359a47d69603c03",
+    "size_bytes": 1749182146,
+    "url": "https://github.com/RamDll/emerald-ota/releases/download/2.20/lineage-24.0-2.20-emerald-signed-ota.zip",
+    "version": "RamDll 2.20 full OTA"
+  },
+  "xiaomi": {
+    "images": {
+      "boot": {
+        "sha256": "ab65b9073d4a6356dd59a50d13860ef7583896aebb0433e3228e1a6e5d8bb930",
+        "size_bytes": 67108864
+      },
+      "dtbo": {
+        "sha256": "bcf2689e91b0d929be20d794c7f2d797718ad734e61bea24b3de0e80c1ce865e",
+        "size_bytes": 8388608
+      },
+      "mi_ext": {
+        "sha256": "8d58aa806d3dd4a078611cba83c53b021917a92c2b50505a2e28cec05b387a64",
+        "size_bytes": 957632512
+      },
+      "odm_dlkm": {
+        "sha256": "0c2782432531f7a1f3cd494756780dc24cb9cbcaf04ea2ffc502aaea99acd05e",
+        "size_bytes": 348160
+      },
+      "system_dlkm": {
+        "sha256": "c3e10a0b08cd7845453482e11b5fa8a3cbb182559100d0617b259ad5c61efcb3",
+        "size_bytes": 8044544
+      },
+      "vbmeta": {
+        "sha256": "66e513e3f61e4ac9521e2f613396e9c1542a5fd68e94bb8b1fae8c4d42a6b13e",
+        "size_bytes": 8192
+      },
+      "vbmeta_system": {
+        "sha256": "ff906f26cbdbdba3ccdce46365be79f0ec391f5ce85ef3ad8f5c1ebe5a04191c",
+        "size_bytes": 4096
+      },
+      "vbmeta_vendor": {
+        "sha256": "1b735bc4a0982332ff30d8df1e806e0d270311d2ab7da3461723ccc85aab671e",
+        "size_bytes": 4096
+      },
+      "vendor": {
+        "sha256": "b329feee52ea854e64a0fb81a0baecc8e9c952e780d63401a2c00221f66e8afb",
+        "size_bytes": 775196672
+      },
+      "vendor_boot": {
+        "sha256": "ddf2a0f14afa434eb0096338b75df3cd6cfbc1dc18ec7f0d93a76a9238135af2",
+        "size_bytes": 67108864
+      },
+      "vendor_dlkm": {
+        "sha256": "209697de53096e46ae058e0942134f51ca65025959db937a49b5c68b84ab702b",
+        "size_bytes": 15253504
+      }
+    },
+    "payload_manifest_sha256": "43b900ee82d4237bf2f6e3f38b719dba180d71435a0cfa29981ca04d882d0d2a",
+    "payload_manifest_size_bytes": 204117,
+    "size_bytes": 5352868743,
+    "url": "https://bigota.d.miui.com/OS3.0.306.0.WFOMIXM/emerald_r_global-ota_full-OS3.0.306.0.WFOMIXM-user-16.0-2c23fa0a2a.zip",
+    "version": "OS3.0.306.0.WFOMIXM"
+  }
+}
