@@ -57,3 +57,25 @@ The fingerprint carries the donor's `WNFMIXM` string because the donor system ru
 - One device only.
 - No IMEI, serial number, account data, or personal identifiers are recorded here.
 - The test does not prove compatibility with other variants, bases, or hardware revisions.
+
+## Follow-up OTA with Google apps — 2026-11-13
+
+The charging-control OTA upgraded the existing LineageOS installation from
+slot B to slot A on the same Redmi Note 14S and WFOMIXM base. It retained the
+donor's Google apps. Recovery sideload finished without formatting or clearing
+userdata. Android booted in slot A and the charging-control service and its
+Settings screen were verified. App-by-app data and account-session retention
+were not independently verified during this run.
+
+The tested ZIP has SHA-256
+`39f0ac044f1ae91c0161a28e0deec2ff814b76f55d50260bea1b67ba6b41e842`.
+
+On 2026-11-18, all eight logical partition hashes on the running device
+matched this OTA. The GMS APEX, Play Store and Google Services Framework
+also matched the separate MindTheGapps release byte for byte.
+[MindTheGapps 17 ARM64 release](https://github.com/MindTheGapps/17.0.0-arm64/releases/tag/MindTheGapps-17.0.0-arm64-20261022_132445).
+
+Four Google overlays had different resource contents and signing certificates,
+so this comparison does not establish direct add-on compatibility. The
+[vanilla test](vanilla.md) used DSU with separate data. Full installation of
+the vanilla ZIP remains untested.
