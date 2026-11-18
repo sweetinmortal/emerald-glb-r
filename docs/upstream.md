@@ -24,4 +24,8 @@ SourceForge project for eventual binary downloads. The complete OTA install
 procedure, compatibility patch series, portable packaging workflow and binary
 redistribution review remain pending. See [publication status](publication.md).
 
+The [WFOMIXM source-port review](source-port-readiness.md) records the
+305/306 kernel and image differences and the validation still needed for
+a formal LineageOS submission.
+
 The existing issue remains a reference. Preparation of the standalone tooling can proceed independently of a maintainer response. The draft PR described above remains a possible future contribution.

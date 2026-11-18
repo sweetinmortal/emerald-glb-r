@@ -65,11 +65,35 @@ its input directory arguments. [Kernel input procedure](stock-kernel-inputs.md).
 Both prepared PAX files matched the SHA-256 values of the archives used
 for the original experimental build.
 
+## Reproduce the two unsigned EROFS images
+
+Use the two default filtered PAX archives, including their original
+metadata and with the optional removals disabled. Run on Linux with the
+extracted AOSP Android 17 otatools from build 16644040, including the host
+libraries in `lib64`. The tool checks the two EROFS executable hashes.
+The original tools archive SHA-256 was
+`bc85557aa0c59a7d0b48b8175250948d67b2d0f293bd74eb8d5753ba4ad7781f`.
+[AOSP build reference](https://ci.android.com/builds/submitted/16644040/aosp_cf_arm64_only_phone-userdebug/latest/artifacts).
+The build used the locally retained copy. The original direct artifact URL
+returned HTTP 404 at the time of this review.
+
+```sh
+python3 -B scripts/build-vanilla-erofs.py \
+  --filtered /path/to/filtered-pax \
+  --otatools /path/to/extracted-otatools \
+  --output /path/to/unsigned-erofs
+```
+
+The tool validates the inputs, runs `fsck.erofs`, and compares the
+resulting images to the exact historical unsigned images. Both images
+matched in a clean Linux run using the archives created with the local
+repack tools. The output includes an image verification report for later
+AVB wrapping and packaging.
+
 ## Remaining packaging work
 
-A full OTA also needs the EROFS image build, patched vendor and recovery
-assembly, APEX metadata regeneration, aligned AVB and OTA signatures, and
-payload replay. The exact charging-control binaries came from the
+A full OTA also needs patched vendor and recovery assembly, APEX metadata
+regeneration, aligned AVB and OTA signatures, and payload replay. The exact charging-control binaries came from the
 LineageOS Health sources documented by the device tree. A local rebuild
 must account for these inputs and regenerate all signing metadata with
 the builder's own identities. [Health prebuilt provenance](https://github.com/emerald-lineage/android_device_xiaomi_emerald/blob/d457692c4e0c87c84b906c995b4a2d4a05032286/prebuilts/lineage-health/README.md).

@@ -42,6 +42,12 @@ checks are pending. The checks below cover the candidate with SHA-256
   [Upstream release](https://github.com/googlefonts/googlesans-flex/releases/tag/v3.007),
   [OFL text](https://github.com/googlefonts/googlesans-flex/blob/58cd9cb9b/OFL.txt).
 
+Xiaomi's operating system agreement covers the embedded files and updates,
+preserves the licenses that apply to open-source components, and restricts
+publication of its proprietary software. The stock vendor notices reviewed
+do not establish a grant for including the Widevine APEX or OEMCrypto in
+this OTA. [Xiaomi operating system agreement, sections 1, 2 and 6](https://terms.miui.com/doc/eula/en_US.html).
+
 A binary release needs a complete source, license and notice inventory for the
 actual bytes being shared. SourceForge's upload terms require sufficient rights
 to distribute third-party content. [SourceForge terms](https://slashdotmedia.com/terms-of-use/).
